@@ -1,11 +1,42 @@
 # FlowFanAutomate - Research Report
 
 ## Project Goal
-Build an automated system to create fan channels of **Flow Church** (Pastors Russell & Vetta Cash, DC Metro area) for TikTok and Instagram, by clipping and posting short-form videos from their long-form content.
+Build a **batch content generation system** that creates a bank of 30 days of short-form video content in a single session, then schedules it to post automatically. NOT a daily real-time system — runs in batches.
 
+### Target Content
+- **Church:** The FLOW Church (Bishop Dag Heward-Mills, Accra, Ghana — global online church)
+- **FLOW = Flexible Lovers Of the Word** — ~10,000 combined online attendance per service, 90+ countries
 - **YouTube:** [@TheresPowerHere](https://www.youtube.com/@TheresPowerHere)
-- **Website:** [flow-church.org](https://www.flow-church.org)
-- **Content type:** Sermons, worship, relationship/family teaching
+- **Website:** [dagflow.org](https://dagflow.org) / [daghewardmills.org/flow-church](https://www.daghewardmills.org/flow-church/)
+- **Content type:** FLOW Prayer Meetings (5+ hours each), sermons, prophetic blessings
+
+### Specific Segment: "The Prophetic Blessing"
+- Occurs after communion in each service
+- Triggered by keywords: **"the Lord bless you"**
+- Duration: typically **5-8 minutes** per blessing
+- Currently published as horizontal clips (640x360) in the "Prophetic Blessing" playlist
+- **Goal:** Clip these segments, reformat to vertical 9:16, add animated captions, zoom on speaker, format as TikTok/Instagram Reels
+
+### Batch Workflow
+1. Process multiple full-service videos (5+ hrs each) in one session
+2. Extract all "Prophetic Blessing" segments via transcript keyword search
+3. Reformat each to vertical short-form with captions and zoom
+4. Output a bank of 30+ clips
+5. Schedule clips to post automatically over 30 days
+
+### Video Data
+| Video | Duration | Resolution | Views |
+|-------|----------|------------|-------|
+| Full service (S12 E12) | 5:15:45 | 640x360 | 15,919 |
+| Example clip 1 | 5:16 | 640x360 | 656 |
+| Example clip 2 | 8:27 | 640x360 | 783 |
+| Example clip 3 | 6:51 | 640x360 | 430 |
+
+### Chosen Open-Source Foundation: ClipsAI
+- **Repo:** [ClipsAI/clipsai](https://github.com/ClipsAI/clipsai)
+- **Install:** `pip install clipsai`
+- **Why:** Only true pip-installable Python library; explicitly designed for sermons; WhisperX transcription with word-level timestamps; Pyannote speaker diarization; dynamic 9:16 reframing with speaker focus
+- **What we add:** Keyword-based segment detection, animated captions, yt-dlp download, batch processing, scheduling
 
 ---
 
